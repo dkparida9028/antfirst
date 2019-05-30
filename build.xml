@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project default="run" name="java tasks">
+<target name="compile" description="compile the java file">
+<mkdir dir="build/classes"/>
+<javac destdir="build/classes" srcdir="src"/>
+</target>
+<target name="package" description="packaging the files" depends="compile">
+<mkdir dir="build/jars"/>
+<jar basedir="build/classes" destfile="build/jars/HelloWorld.jar">
+<manifest>
+<attribute name="Main-Class" value="HelloWorld"/>
+</manifest>
+</jar>
+</target>
+<target name="run" description="run the package" depends="package">
+<java fork="true" jar="build/jar/HelloWorld.jar"/>
+</target>
+</project>
